@@ -19,8 +19,10 @@
 		1E3CCBB7278432E100AEEC53 /* DetailSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3CCBB6278432E100AEEC53 /* DetailSignUpViewController.swift */; };
 		1E3CCBB9278442BC00AEEC53 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3CCBB8278442BC00AEEC53 /* APIService.swift */; };
 		1E3CCBBB2784432900AEEC53 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3CCBBA2784432900AEEC53 /* User.swift */; };
-		1E3CCBBD27847A4E00AEEC53 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3CCBBC27847A4E00AEEC53 /* SignUpViewModel.swift */; };
+		1E3CCBBD27847A4E00AEEC53 /* DetailSignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3CCBBC27847A4E00AEEC53 /* DetailSignUpViewModel.swift */; };
 		1E3CCBBF27847A9B00AEEC53 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3CCBBE27847A9B00AEEC53 /* Observable.swift */; };
+		1E3CCBC42784B98300AEEC53 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3CCBC32784B98300AEEC53 /* Endpoint.swift */; };
+		1E3CCBC62784BF6E00AEEC53 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3CCBC52784BF6E00AEEC53 /* SignInView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,8 +39,10 @@
 		1E3CCBB6278432E100AEEC53 /* DetailSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSignUpViewController.swift; sourceTree = "<group>"; };
 		1E3CCBB8278442BC00AEEC53 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		1E3CCBBA2784432900AEEC53 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		1E3CCBBC27847A4E00AEEC53 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		1E3CCBBC27847A4E00AEEC53 /* DetailSignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSignUpViewModel.swift; sourceTree = "<group>"; };
 		1E3CCBBE27847A9B00AEEC53 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		1E3CCBC32784B98300AEEC53 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		1E3CCBC52784BF6E00AEEC53 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,10 +76,10 @@
 		1E3CCB8C2782C52200AEEC53 /* SeSac_Farm */ = {
 			isa = PBXGroup;
 			children = (
-				1E3CCBA12782C58900AEEC53 /* SignUp */,
+				1E3CCBA12782C58900AEEC53 /* Sign */,
 				1E3CCB8D2782C52200AEEC53 /* AppDelegate.swift */,
 				1E3CCBB8278442BC00AEEC53 /* APIService.swift */,
-				1E3CCBBA2784432900AEEC53 /* User.swift */,
+				1E3CCBC32784B98300AEEC53 /* Endpoint.swift */,
 				1E3CCBBE27847A9B00AEEC53 /* Observable.swift */,
 				1E3CCB8F2782C52200AEEC53 /* SceneDelegate.swift */,
 				1E3CCB912782C52200AEEC53 /* ViewController.swift */,
@@ -86,32 +90,42 @@
 			path = SeSac_Farm;
 			sourceTree = "<group>";
 		};
-		1E3CCBA12782C58900AEEC53 /* SignUp */ = {
+		1E3CCBA12782C58900AEEC53 /* Sign */ = {
 			isa = PBXGroup;
 			children = (
-				1E3CCBAA278350C000AEEC53 /* Second */,
-				1E3CCBA9278350AF00AEEC53 /* FirstPage */,
+				1E3CCBC027849E9B00AEEC53 /* View */,
+				1E3CCBAA278350C000AEEC53 /* ViewModel */,
+				1E3CCBA9278350AF00AEEC53 /* Model */,
 			);
-			path = SignUp;
+			path = Sign;
 			sourceTree = "<group>";
 		};
-		1E3CCBA9278350AF00AEEC53 /* FirstPage */ = {
+		1E3CCBA9278350AF00AEEC53 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1E3CCBA22782C5B100AEEC53 /* SignUpViewController.swift */,
-				1E3CCBA72782C62B00AEEC53 /* SignUpView.swift */,
-				1E3CCBBC27847A4E00AEEC53 /* SignUpViewModel.swift */,
+				1E3CCBBA2784432900AEEC53 /* User.swift */,
 			);
-			path = FirstPage;
+			path = Model;
 			sourceTree = "<group>";
 		};
-		1E3CCBAA278350C000AEEC53 /* Second */ = {
+		1E3CCBAA278350C000AEEC53 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1E3CCBBC27847A4E00AEEC53 /* DetailSignUpViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1E3CCBC027849E9B00AEEC53 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				1E3CCBAB2783515700AEEC53 /* DetailSignUpView.swift */,
+				1E3CCBA22782C5B100AEEC53 /* SignUpViewController.swift */,
+				1E3CCBA72782C62B00AEEC53 /* SignUpView.swift */,
 				1E3CCBB6278432E100AEEC53 /* DetailSignUpViewController.swift */,
+				1E3CCBC52784BF6E00AEEC53 /* SignInView.swift */,
 			);
-			path = Second;
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,14 +207,16 @@
 				1E3CCBBF27847A9B00AEEC53 /* Observable.swift in Sources */,
 				1E3CCBB7278432E100AEEC53 /* DetailSignUpViewController.swift in Sources */,
 				1E3CCB922782C52200AEEC53 /* ViewController.swift in Sources */,
-				1E3CCBBD27847A4E00AEEC53 /* SignUpViewModel.swift in Sources */,
+				1E3CCBBD27847A4E00AEEC53 /* DetailSignUpViewModel.swift in Sources */,
 				1E3CCBAC2783515700AEEC53 /* DetailSignUpView.swift in Sources */,
 				1E3CCBA82782C62B00AEEC53 /* SignUpView.swift in Sources */,
 				1E3CCB8E2782C52200AEEC53 /* AppDelegate.swift in Sources */,
 				1E3CCBBB2784432900AEEC53 /* User.swift in Sources */,
 				1E3CCBA32782C5B100AEEC53 /* SignUpViewController.swift in Sources */,
 				1E3CCBB9278442BC00AEEC53 /* APIService.swift in Sources */,
+				1E3CCBC42784B98300AEEC53 /* Endpoint.swift in Sources */,
 				1E3CCB902782C52200AEEC53 /* SceneDelegate.swift in Sources */,
+				1E3CCBC62784BF6E00AEEC53 /* SignInView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

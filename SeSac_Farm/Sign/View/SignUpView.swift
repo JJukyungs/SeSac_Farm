@@ -9,18 +9,50 @@ import UIKit
 import SnapKit
 
 
-protocol SignUpViewRepersentalbe {
-    func setupView()
-    func setupConstraints()
-}
 
-class SignUpView: UIView, SignUpViewRepersentalbe {
+
+class SignUpView: UIView {
     
-    let logoImage = UIImageView()
-    let titleLabel = UILabel()
-    let subTitleLabel = UILabel()
-    let startButton = UIButton()
-    let loginButton = UIButton()
+    let logoImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.image = UIImage(named: "logo_ssac_clear")
+        return imageView
+    }()
+    
+    let titleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "당신 근처의 새싹 농장"
+        label.font = .boldSystemFont(ofSize: 20)
+        label.textAlignment = .center
+        return label
+    }()
+    let subTitleLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.text = "바람의나라:연 지식부터 iOS까지 지금 SeSac에서 함께해보세요!"
+        label.textAlignment = .center
+        return label
+    }()
+    
+    let startButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("시작하기", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .green
+        button.layer.cornerRadius = 8
+        return button
+    }()
+    
+    let loginButton: UIButton = {
+        let button = UIButton()
+        let loginButtonText = "이미 계정이 있나요? 로그인"
+        button.setTitleColor(.lightGray, for: .normal)
+        let loginText = NSMutableAttributedString(string: loginButtonText)
+        loginText.addAttribute(.foregroundColor, value: UIColor.green, range: NSRange(location: 11, length: 4))
+        button.setAttributedTitle(loginText, for: .normal)
+        return button
+    }()
     
     
     override init(frame: CGRect) {
@@ -35,32 +67,12 @@ class SignUpView: UIView, SignUpViewRepersentalbe {
     
     
     func setupView() {
+        
         addSubview(logoImage)
-        logoImage.image = UIImage(named: "logo_ssac_clear")
-        logoImage.contentMode = .scaleAspectFill
         addSubview(titleLabel)
-        titleLabel.text = "당신 근처의 새싹 농장"
-        titleLabel.font = .boldSystemFont(ofSize: 18)
-        titleLabel.textAlignment = .center
         addSubview(subTitleLabel)
-        subTitleLabel.numberOfLines = 0
-        subTitleLabel.text = "iOS 지식부터 바람의나라 까지 지금 SeSac에서 함께해보세요!"
-        subTitleLabel.textAlignment = .center
-        
         addSubview(startButton)
-        startButton.setTitle("시작하기", for: .normal)
-        startButton.setTitleColor(.white, for: .normal)
-        startButton.backgroundColor = .green
-        startButton.layer.cornerRadius = 8
-        
-        
         addSubview(loginButton)
-        let loginButtonText = "이미 계정이 있나요? 로그인"
-//        loginButton.setTitle(loginButtonText, for: .normal)
-        loginButton.setTitleColor(.lightGray, for: .normal)
-        let loginText = NSMutableAttributedString(string: loginButtonText)
-        loginText.addAttribute(.foregroundColor, value: UIColor.green, range: NSRange(location: 11, length: 4))
-        loginButton.setAttributedTitle(loginText, for: .normal)
     }
     
     func setupConstraints() {

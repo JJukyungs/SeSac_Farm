@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SignUpViewModel {
+class DetailSignUpViewModel {
     
     var username: Observable<String> = Observable("")
     var email: Observable<String> = Observable("")

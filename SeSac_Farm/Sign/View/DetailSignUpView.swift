@@ -11,16 +11,48 @@ import SnapKit
 
 class DetailSignUpView : UIView {
     
-    let userEmailTextField = UITextField()
-    let userNameTextField = UITextField()
-    let userPasswordTextField = UITextField()
-    let confirmPasswordTextField = UITextField()
+    let userEmailTextField: UITextField = {
+        let textField = UITextField()
+        textField.backgroundColor = .white
+        textField.placeholder = "이메일 주소"
+        textField.layer.borderWidth = 1
+        return textField
+    }()
+    let userNameTextField: UITextField = {
+        let textField = UITextField()
+        textField.backgroundColor = .white
+        textField.placeholder = "닉네임"
+        textField.layer.borderWidth = 1
+        return textField
+    }()
+    let userPasswordTextField: UITextField = {
+        let textField = UITextField()
+        textField.backgroundColor = .white
+        textField.placeholder = "비밀번호"
+        textField.layer.borderWidth = 1
+        return textField
+    }()
+    let confirmPasswordTextField: UITextField = {
+        let textField = UITextField()
+        textField.backgroundColor = .white
+        textField.placeholder = "비밀번호 확인"
+        textField.layer.borderWidth = 1
+        return textField
+    }()
     
-    let signUpButton = UIButton()
+    let signUpButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .lightGray
+        button.setTitle("가입하기", for: .normal)
+        button.tintColor = .white
+        return button
+    }()
     
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setupView()
+        setupConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -32,25 +64,10 @@ class DetailSignUpView : UIView {
     func setupView() {
         
         addSubview(userEmailTextField)
-        userEmailTextField.backgroundColor = .white
-        userEmailTextField.placeholder = "이메일 주소"
-        
         addSubview(userNameTextField)
-        userNameTextField.backgroundColor = .white
-        userNameTextField.placeholder = "닉네임"
-       
         addSubview(userPasswordTextField)
-        userPasswordTextField.backgroundColor = .white
-        userPasswordTextField.placeholder = "비밀번호"
-        
         addSubview(confirmPasswordTextField)
-        confirmPasswordTextField.backgroundColor = .white
-        confirmPasswordTextField.placeholder = "비밀번호 확인"
-        
         addSubview(signUpButton)
-        signUpButton.backgroundColor = .orange
-        signUpButton.setTitle("가입하기", for: .normal)
-        signUpButton.tintColor = .white
     }
     
     func setupConstraints() {

@@ -27,7 +27,12 @@ class APIService {
         
         request.httpMethod = "POST"
         request.httpBody = "email=\(email)&username=\(username)&password=\(password)".data(using: .utf8, allowLossyConversion: false)
+       
         
+        // 수정 버전
+        URLSession.request(endpoint: request, completion: completion)
+        
+        /*
         URLSession.shared.dataTask(with: request) { data, response, error in
             
             guard error == nil else {
@@ -59,5 +64,6 @@ class APIService {
             }
 
         }.resume()
+        */
     }
 }

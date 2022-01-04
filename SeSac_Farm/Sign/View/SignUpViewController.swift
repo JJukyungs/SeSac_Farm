@@ -14,7 +14,6 @@ class SignUpViewController: UIViewController {
     let signUpView = SignUpView()
     
     
-    
     override func loadView() {
         self.view = signUpView
     }
@@ -23,9 +22,13 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         
+        signUpView.startButton.addTarget(self, action: #selector(startButtonClicked), for: .touchUpInside)
     }
     
-    func signUpBind() {
-        
+    
+    @objc func startButtonClicked() {
+        self.navigationController?.pushViewController(DetailSignUpViewController(), animated: true)
     }
+    
+  
 }
