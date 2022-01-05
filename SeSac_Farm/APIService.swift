@@ -48,6 +48,17 @@ class APIService {
 
     }
     
+    
+    // 포스트 조회
+    
+    static func getPosts(token: String, completion: @escaping (Posts?, APIError?) -> Void) {
+        
+        var request = URLRequest(url: Endpoint.getPosts.url)
+        request.httpMethod = Method.GET.rawValue
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        
+        URLSession.request(endpoint: request, completion: completion)
+    }
 }
 
 

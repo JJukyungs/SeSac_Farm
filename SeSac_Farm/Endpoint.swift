@@ -17,6 +17,7 @@ enum Method: String {
 enum Endpoint {
     case signup
     case signin
+    case getPosts
    
 }
 
@@ -25,7 +26,7 @@ extension Endpoint {
         switch self {
         case .signup: return .makeEndpoint("auth/local/register")
         case .signin: return .makeEndpoint("auth/local")
-       
+        case .getPosts: return .makeEndpoint("Posts")
       
         }
     }

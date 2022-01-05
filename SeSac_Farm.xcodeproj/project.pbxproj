@@ -29,6 +29,7 @@
 		1E3CCBD22785FDF900AEEC53 /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3CCBD12785FDF900AEEC53 /* PostsViewController.swift */; };
 		1E3CCBD42785FE0A00AEEC53 /* PostsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3CCBD32785FE0A00AEEC53 /* PostsViewModel.swift */; };
 		1E3CCBD62786009900AEEC53 /* Posts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3CCBD52786009900AEEC53 /* Posts.swift */; };
+		1E3CCBD827860A6300AEEC53 /* PostsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3CCBD727860A6300AEEC53 /* PostsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		1E3CCBD12785FDF900AEEC53 /* PostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewController.swift; sourceTree = "<group>"; };
 		1E3CCBD32785FE0A00AEEC53 /* PostsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewModel.swift; sourceTree = "<group>"; };
 		1E3CCBD52786009900AEEC53 /* Posts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Posts.swift; sourceTree = "<group>"; };
+		1E3CCBD727860A6300AEEC53 /* PostsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,13 +137,14 @@
 			isa = PBXGroup;
 			children = (
 				1E3CCBAB2783515700AEEC53 /* DetailSignUpView.swift */,
+				1E3CCBB6278432E100AEEC53 /* DetailSignUpViewController.swift */,
 				1E3CCBA22782C5B100AEEC53 /* SignUpViewController.swift */,
 				1E3CCBA72782C62B00AEEC53 /* SignUpView.swift */,
-				1E3CCBB6278432E100AEEC53 /* DetailSignUpViewController.swift */,
 				1E3CCBC52784BF6E00AEEC53 /* SignInView.swift */,
+				1E3CCBCB2785BA0500AEEC53 /* SignInViewController.swift */,
 				1E3CCBCF2785EE4600AEEC53 /* PostsView.swift */,
 				1E3CCBD12785FDF900AEEC53 /* PostsViewController.swift */,
-				1E3CCBCB2785BA0500AEEC53 /* SignInViewController.swift */,
+				1E3CCBD727860A6300AEEC53 /* PostsTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -229,6 +232,7 @@
 				1E3CCB922782C52200AEEC53 /* ViewController.swift in Sources */,
 				1E3CCBBD27847A4E00AEEC53 /* DetailSignUpViewModel.swift in Sources */,
 				1E3CCBAC2783515700AEEC53 /* DetailSignUpView.swift in Sources */,
+				1E3CCBD827860A6300AEEC53 /* PostsTableViewCell.swift in Sources */,
 				1E3CCBA82782C62B00AEEC53 /* SignUpView.swift in Sources */,
 				1E3CCB8E2782C52200AEEC53 /* AppDelegate.swift in Sources */,
 				1E3CCBBB2784432900AEEC53 /* User.swift in Sources */,
