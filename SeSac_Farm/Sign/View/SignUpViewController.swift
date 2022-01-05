@@ -23,6 +23,8 @@ class SignUpViewController: UIViewController {
         view.backgroundColor = .white
         
         signUpView.startButton.addTarget(self, action: #selector(startButtonClicked), for: .touchUpInside)
+        
+        signUpView.loginButton.addTarget(self, action: #selector(loginButtonClicked), for: .touchUpInside)
     }
     
     
@@ -30,5 +32,8 @@ class SignUpViewController: UIViewController {
         self.navigationController?.pushViewController(DetailSignUpViewController(), animated: true)
     }
     
+    @objc func loginButtonClicked() {
+        self.navigationController?.pushViewController(SignInViewController(), animated: true)
+    }
   
 }
