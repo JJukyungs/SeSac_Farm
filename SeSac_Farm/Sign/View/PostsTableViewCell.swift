@@ -20,6 +20,7 @@ class PostsTableViewCell: UITableViewCell {
         label.clipsToBounds = true
         label.layer.cornerRadius = 5
         label.textColor = .darkGray
+        label.font = .boldSystemFont(ofSize: 12)
         return label
     }()
     
@@ -33,6 +34,7 @@ class PostsTableViewCell: UITableViewCell {
     let creteDateLabel: UILabel = {
         let label = UILabel()
         label.textColor = .lightGray
+        label.font = .systemFont(ofSize: 10)
         return label
     }()
     
@@ -53,8 +55,8 @@ class PostsTableViewCell: UITableViewCell {
     
     let commentButton: UIButton = {
         let bt = UIButton()
-        bt.tintColor = .lightGray
-        bt.backgroundColor = .clear
+        bt.setTitleColor(.lightGray, for: .normal)
+        bt.backgroundColor = .white
         return bt
     }()
     
@@ -76,8 +78,8 @@ class PostsTableViewCell: UITableViewCell {
         addSubview(cententLabel)
         addSubview(creteDateLabel)
         addSubview(bottomStackView)
-        bottomStackView.addSubview(messageImageView)
-        bottomStackView.addSubview(commentButton)
+        bottomStackView.addArrangedSubview(messageImageView)
+        bottomStackView.addArrangedSubview(commentButton)
     }
     
     func setConstraints() {
