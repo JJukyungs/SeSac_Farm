@@ -69,6 +69,7 @@ extension PostsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        // 임시로 높이 잡아놓기
         return 200
     }
     

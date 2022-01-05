@@ -26,7 +26,7 @@ extension Endpoint {
         switch self {
         case .signup: return .makeEndpoint("auth/local/register")
         case .signin: return .makeEndpoint("auth/local")
-        case .getPosts: return .makeEndpoint("Posts")
+        case .getPosts: return .makeEndpoint("posts?_sort=created_at:desc")
       
         }
     }
