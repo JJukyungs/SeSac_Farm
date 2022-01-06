@@ -53,11 +53,18 @@ class PostsTableViewCell: UITableViewCell {
         return image
     }()
     
-    let commentButton: UIButton = {
-        let bt = UIButton()
-        bt.setTitleColor(.lightGray, for: .normal)
-        bt.backgroundColor = .white
-        return bt
+//    let commentButton: UIButton = {
+//        let bt = UIButton()
+//        bt.setTitleColor(.lightGray, for: .normal)
+//        bt.backgroundColor = .white
+//        return bt
+//    }()
+    
+    let commentLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .lightGray
+        label.font = .systemFont(ofSize: 12)
+        return label
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -79,7 +86,7 @@ class PostsTableViewCell: UITableViewCell {
         addSubview(creteDateLabel)
         addSubview(bottomStackView)
         bottomStackView.addArrangedSubview(messageImageView)
-        bottomStackView.addArrangedSubview(commentButton)
+        bottomStackView.addArrangedSubview(commentLabel)
     }
     
     func setConstraints() {

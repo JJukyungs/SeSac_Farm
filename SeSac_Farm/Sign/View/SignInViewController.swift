@@ -61,9 +61,14 @@ class SignInViewController: UIViewController {
                 print("로그인 성공")
                 print("token:", self.signInViewModel.signIn.value.jwt)
                 
-                self.navigationController?.pushViewController(PostsViewController(), animated: true)
+//                self.navigationController?.pushViewController(PostsViewController(), animated: true)
                 
                 // rootView로 바꾸기
+                DispatchQueue.main.async {
+                    guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
+                    windowScene.windows.first?.rootViewController = UINavigationController(rootViewController: PostsViewController())
+                    windowScene.windows.first?.makeKeyAndVisible()
+                }
             }
         }
     }

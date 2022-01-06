@@ -74,6 +74,21 @@ class APIService {
         URLSession.request(endpoint: request, completion: completion)
         
     }
+    
+    // 포스트 디테일 보기
+    
+    static func detailPost(token: String, postId: Int, completion: @escaping (Post?, APIError?) -> Void) {
+        
+        let url = URL(string: "\(Endpoint.detailPost.url)=\(postId)")!
+        
+        var request = URLRequest(url: url)
+        
+        request.httpMethod = Method.GET.rawValue
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        
+        URLSession.request(endpoint: request, completion: completion)
+        
+    }
 }
 
 

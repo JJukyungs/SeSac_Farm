@@ -27,6 +27,14 @@ class PostsViewController: UIViewController {
         postView.writeButton.addTarget(self, action: #selector(writeButtonClicked), for: .touchUpInside)
     }
     
+    // test 중
+    override func viewWillAppear(_ animated: Bool) {
+        
+        
+           self.postView.tableView.reloadData()
+        
+    }
+    
     func setTableView() {
         
         postView.tableView.delegate = self
@@ -72,12 +80,18 @@ extension PostsViewController: UITableViewDelegate, UITableViewDataSource {
         cell.creteDateLabel.text = row.createdAt
         
         if row.comments.count == 0 {
-            cell.commentButton.setTitle("댓글 작성", for: .normal)
+            cell.commentLabel.text = "댓글 작성하기"
         } else {
-            cell.commentButton.setTitle("댓글 \(row.comments.count)개", for: .normal)
+            cell.commentLabel.text = "댓글 \(row.comments.count)개"
         }
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+//        let row = viewModel.cellForRowAt(indexPath: indexPath)
+        self.navigationController?.pushViewController(DetailPostViewController(), animated: true)
     }
     
     

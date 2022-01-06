@@ -19,7 +19,7 @@ enum Endpoint {
     case signin
     case getPosts
     case writePost
-   
+    case detailPost
 }
 
 extension Endpoint {
@@ -29,6 +29,7 @@ extension Endpoint {
         case .signin: return .makeEndpoint("auth/local")
         case .getPosts: return .makeEndpoint("posts?_sort=created_at:desc")
         case .writePost: return .makeEndpoint("posts")
+        case .detailPost: return .makeEndpoint("comments?post")
         }
     }
 }

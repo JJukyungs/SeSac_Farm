@@ -72,6 +72,7 @@ class DetailSignUpViewController: UIViewController {
             signUpViewModel.postUserSignUp {
                 // Alert 이나 토스트로
                 print("회원가입 완료")
+                self.navigationController?.popViewController(animated: true)
             }
         } else {
             // Alert 이나 토스트로
