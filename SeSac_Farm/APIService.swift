@@ -59,6 +59,21 @@ class APIService {
         
         URLSession.request(endpoint: request, completion: completion)
     }
+    
+    
+    // 포스트 글 작성
+    
+    static func writePost(token: String, text: String, completion: @escaping (Post?, APIError?) -> Void) {
+        
+        var request = URLRequest(url: Endpoint.writePost.url)
+        
+        request.httpMethod = Method.POST.rawValue
+        request.httpBody = "text=\(text)".data(using: .utf8, allowLossyConversion: false)
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        
+        URLSession.request(endpoint: request, completion: completion)
+        
+    }
 }
 
 

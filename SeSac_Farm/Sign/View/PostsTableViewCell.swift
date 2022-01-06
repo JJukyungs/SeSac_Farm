@@ -101,6 +101,7 @@ class PostsTableViewCell: UITableViewCell {
             make.top.equalTo(creteDateLabel.snp.bottom).offset(10)
             make.leading.equalToSuperview().offset(10)
             make.height.equalTo(20)
+            make.bottom.equalToSuperview()
         }
         
     }

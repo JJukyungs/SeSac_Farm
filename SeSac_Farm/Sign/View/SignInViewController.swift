@@ -63,6 +63,7 @@ class SignInViewController: UIViewController {
                 
                 self.navigationController?.pushViewController(PostsViewController(), animated: true)
                 
+                // rootView로 바꾸기
             }
         }
     }

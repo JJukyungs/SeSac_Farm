@@ -22,10 +22,18 @@ class PostsViewController: UIViewController {
         
         view.backgroundColor = .white
         
+        setTableView()
+        
+        postView.writeButton.addTarget(self, action: #selector(writeButtonClicked), for: .touchUpInside)
+    }
+    
+    func setTableView() {
+        
         postView.tableView.delegate = self
         postView.tableView.dataSource = self
         postView.tableView.register(PostsTableViewCell.self, forCellReuseIdentifier: PostsTableViewCell.identifier)
     
+        // 높이조절 [Jack님이 레이아웃부분 문제 해결하라고해서 해결]
         postView.tableView.rowHeight = UITableView.automaticDimension
     
         // 요걸 안하니 안불러와져서 안나왔던거구나..
@@ -37,7 +45,11 @@ class PostsViewController: UIViewController {
         viewModel.getPosts.bind { post in
             self.postView.tableView.reloadData()
         }
-        
+    }
+    
+    @objc func writeButtonClicked() {
+        print("writeButton")
+        self.navigationController?.pushViewController(WritePostViewController(), animated: true)
     }
     
     
@@ -66,11 +78,6 @@ extension PostsViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        // 임시로 높이 잡아놓기
-        return 200
     }
     
     
