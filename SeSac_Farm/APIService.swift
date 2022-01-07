@@ -77,7 +77,7 @@ class APIService {
     
     // 포스트 디테일 보기
     
-    static func detailPost(token: String, postId: Int, completion: @escaping (Post?, APIError?) -> Void) {
+    static func detailPost(token: String, postId: Int, completion: @escaping (Comment?, APIError?) -> Void) {
         
         let url = URL(string: "\(Endpoint.detailPost.url)=\(postId)")!
         

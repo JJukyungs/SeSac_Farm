@@ -54,7 +54,6 @@ struct UserPosts: Codable {
     }
 }
 
-
 enum Provider: String, Codable {
     case local = "local"
 }

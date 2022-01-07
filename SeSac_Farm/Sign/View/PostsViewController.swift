@@ -90,7 +90,14 @@ extension PostsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-//        let row = viewModel.cellForRowAt(indexPath: indexPath)
+        let row = viewModel.cellForRowAt(indexPath: indexPath)
+        
+        let vc = DetailPostViewController()
+        print(row.id)
+        print(row.comments.count)
+        print(row.comments)
+        vc.postId = row.id
+        vc.commentCount = row.comments.count
         self.navigationController?.pushViewController(DetailPostViewController(), animated: true)
     }
     

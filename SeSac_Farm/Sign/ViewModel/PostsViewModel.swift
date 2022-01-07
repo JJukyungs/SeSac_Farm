@@ -20,7 +20,7 @@ class PostsViewModel {
         APIService.getPosts(token: token) { post, error in
             
 //            print("post: \(post)")
-            print("error: \(error)")
+//            print("error: \(error)")
         
             guard let post = post else {
                 return

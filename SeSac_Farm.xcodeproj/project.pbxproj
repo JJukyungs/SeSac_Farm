@@ -37,6 +37,7 @@
 		1E3CCBE42786EBF600AEEC53 /* DetailPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3CCBE32786EBF600AEEC53 /* DetailPostViewController.swift */; };
 		1E3CCBE62786F14E00AEEC53 /* DetailPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3CCBE52786F14E00AEEC53 /* DetailPostViewModel.swift */; };
 		1E3CCBE82786FBD000AEEC53 /* CommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3CCBE72786FBD000AEEC53 /* CommentsTableViewCell.swift */; };
+		1E3CCBEA27873B7100AEEC53 /* Comments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3CCBE927873B7100AEEC53 /* Comments.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +72,7 @@
 		1E3CCBE32786EBF600AEEC53 /* DetailPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostViewController.swift; sourceTree = "<group>"; };
 		1E3CCBE52786F14E00AEEC53 /* DetailPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostViewModel.swift; sourceTree = "<group>"; };
 		1E3CCBE72786FBD000AEEC53 /* CommentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsTableViewCell.swift; sourceTree = "<group>"; };
+		1E3CCBE927873B7100AEEC53 /* Comments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comments.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 			children = (
 				1E3CCBBA2784432900AEEC53 /* User.swift */,
 				1E3CCBD52786009900AEEC53 /* Posts.swift */,
+				1E3CCBE927873B7100AEEC53 /* Comments.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 				1E3CCBCC2785BA0500AEEC53 /* SignInViewController.swift in Sources */,
 				1E3CCBBF27847A9B00AEEC53 /* Observable.swift in Sources */,
 				1E3CCBE02786D2E000AEEC53 /* WritePostViewModel.swift in Sources */,
+				1E3CCBEA27873B7100AEEC53 /* Comments.swift in Sources */,
 				1E3CCBB7278432E100AEEC53 /* DetailSignUpViewController.swift in Sources */,
 				1E3CCBE42786EBF600AEEC53 /* DetailPostViewController.swift in Sources */,
 				1E3CCBD22785FDF900AEEC53 /* PostsViewController.swift in Sources */,
