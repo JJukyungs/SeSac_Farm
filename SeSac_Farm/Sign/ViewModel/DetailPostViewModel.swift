@@ -8,66 +8,33 @@
 import UIKit
 
 class DetailPostViewModel {
+ 
+    // 나눠서 생각을 해보자 post 부분 나와야하고 comment 부분 나와야함 한번에 하지말고 따로
     
+    
+    var postId: Observable<Int> = Observable(0)
+    
+    var detailPosts: Observable<Post> = Observable(Post(id: 0, text: "", user: UserPosts(id: 0, username: "", email: "", provider: .local, confirmed: false, blocked: false, role: 0, createdAt: "", updatedAt: ""), createdAt: "", updatedAt: "", comments: []))
+    
+    var comment: Observable<Comment> = Observable(Comment(id: 0, comment: "", user: UserComent(id: 0, username: "", email: "", provider: .local, confirmed: true, blocked: false, role: 0, createdAt: "", updatedAt: ""), post: PostComent(id: 0, text: "", user: 0, createdAt: "", updatedAt: ""), createdAt: "", updatedAt: ""))
+
+    
+    // 코멘트
+    
+    func viewComments(postId: Int, completion: @escaping () -> Void) {
+        // post 에서 들어가면 토큰은 있으니깐
+        let token = UserDefaults.standard.string(forKey: "token") ?? ""
+        
+        APIService.detailPost(token: token, postId: postId) { comment, error in
+            
+            guard let comment = comment else {
+                return
+            }
+            self.comment.value = comment
+            completion()
+        }
+    }
+    
+    
+     
 }
-
-
-//class DetailPostViewModel {
-//
-//    var ditailPost: Observable<Post> = Observable(Post(id: 0, text: "", user: UserPosts(id: 0, username: "", email: "", provider: .local, confirmed: false, blocked: false, role: 0, createdAt: "", updatedAt: ""), createdAt: "", updatedAt: "", comments: []))
-//
-//
-//    func getDetailPost(postId: Int, completion: @escaping () -> Void) {
-//
-//        let token = UserDefaults.standard.string(forKey: "token") ?? ""
-//
-//        APIService.detailPost(token: token, postId: postId) { post, error in
-//
-//            guard let post = post else {
-//                return
-//            }
-//
-//
-//            self.ditailPost.value = post
-//
-//            completion()
-//        }
-//    }
-//
-//}
-
-//class CommetPostViewModel {
-//
-////    var getComments: Observable<Comment> = Observable(Comment(id: 0, comment: "", user: 0, post: 0, createdAt: "", updatedAt: ""))
-//
-//    var getPostComments: Observable<Posts> = Observable(Posts())
-//
-//
-//    func getPostComments(postId: Int, completion: @escaping () -> Void) {
-//
-//        let token = UserDefaults.standard.string(forKey: "token") ?? ""
-//
-//        APIService.detailPost(token: token, postId: postId) { post, error in
-//
-//            guard let post = post else {
-//                return
-//            }
-//
-//            self.getPostComments.value = post
-//
-//            completion()
-//        }
-//    }
-//}
-//
-//
-//extension CommetPostViewModel {
-//
-//    func cellForRowAt(indexPath: IndexPath) -> Post {
-//        return getComments.value.comment[indexPath.row]
-//    }
-//
-////    func numberOfRowInSection {
-////        return getComments.value.comment.count
-////    }
-//}

@@ -75,21 +75,37 @@ class APIService {
         
     }
     
-    // 포스트 디테일 보기
+    // 포스트 디테일 보기 [comment 부분]
     
     static func detailPost(token: String, postId: Int, completion: @escaping (Comment?, APIError?) -> Void) {
+
+        let url = URL(string: "\(Endpoint.detailPost.url)=\(postId)")!
+
+        var request = URLRequest(url: url)
+
+        request.httpMethod = Method.GET.rawValue
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+
+        URLSession.request(endpoint: request, completion: completion)
+
+    }
+    
+    // comment 부분
+    
+    static func commentsView(token: String, postId: Int, completion: @escaping (Comments?, APIError?) -> Void) {
         
         let url = URL(string: "\(Endpoint.detailPost.url)=\(postId)")!
-        
         var request = URLRequest(url: url)
         
         request.httpMethod = Method.GET.rawValue
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-        
+
         URLSession.request(endpoint: request, completion: completion)
+        
         
     }
 }
+
 
 
 
