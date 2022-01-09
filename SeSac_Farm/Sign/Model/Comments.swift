@@ -12,7 +12,7 @@ import Foundation
 struct Comment: Codable {
     let id: Int
     let comment: String
-    let user: UserComent
+    let user: UserComment
     let post: PostComent?
     let createdAt, updatedAt: String
 
@@ -38,7 +38,7 @@ struct PostComent: Codable {
 }
 
 // MARK: - User
-struct UserComent: Codable {
+struct UserComment: Codable {
     let id: Int
     let username, email: String
     let provider: ProviderComent

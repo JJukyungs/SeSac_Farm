@@ -16,25 +16,41 @@ class DetailPostViewModel {
     
     var detailPosts: Observable<Post> = Observable(Post(id: 0, text: "", user: UserPosts(id: 0, username: "", email: "", provider: .local, confirmed: false, blocked: false, role: 0, createdAt: "", updatedAt: ""), createdAt: "", updatedAt: "", comments: []))
     
-    var comment: Observable<Comment> = Observable(Comment(id: 0, comment: "", user: UserComent(id: 0, username: "", email: "", provider: .local, confirmed: true, blocked: false, role: 0, createdAt: "", updatedAt: ""), post: PostComent(id: 0, text: "", user: 0, createdAt: "", updatedAt: ""), createdAt: "", updatedAt: ""))
+    var comment: Observable<Comment> = Observable(Comment(id: 0, comment: "", user: UserComment(id: 0, username: "", email: "", provider: .local, confirmed: true, blocked: false, role: 0, createdAt: "", updatedAt: ""), post: PostComent(id: 0, text: "", user: 0, createdAt: "", updatedAt: ""), createdAt: "", updatedAt: ""))
 
+    
+    
+//    var comments: Observable<Comment> = Observable(Comments())
+    
+    
+    
+    // 한개 포스트 디테일로 보기
+    
+    func detailPost(postId: Int, completion: @escaping () -> Void) {
+        print("detailPost 연결")
+        
+        let token = UserDefaults.standard.string(forKey: "token") ?? ""
+        
+        
+        
+    }
+    
     
     // 코멘트
     
     func viewComments(postId: Int, completion: @escaping () -> Void) {
-        // post 에서 들어가면 토큰은 있으니깐
+
         let token = UserDefaults.standard.string(forKey: "token") ?? ""
-        
-        APIService.detailPost(token: token, postId: postId) { comment, error in
+        print("comment 연결")
+        APIService.commentsView(token: token, postId: postId) { post, error in
             
-            guard let comment = comment else {
-                return
-            }
-            self.comment.value = comment
+            
             completion()
         }
     }
     
+    
+   
     
      
 }

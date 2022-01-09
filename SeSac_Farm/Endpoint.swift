@@ -19,7 +19,8 @@ enum Endpoint {
     case signin
     case getPosts
     case writePost
-    case detailPost
+    case detailPost(postId: Int)
+    case getComment(postId: Int)
 }
 
 extension Endpoint {
@@ -29,7 +30,9 @@ extension Endpoint {
         case .signin: return .makeEndpoint("auth/local")
         case .getPosts: return .makeEndpoint("posts?_sort=created_at:desc")
         case .writePost: return .makeEndpoint("posts")
-        case .detailPost: return .makeEndpoint("comments?post")
+        case .detailPost(postId: let postId): return .makeEndpoint("posts/\(postId)")
+        case .getComment(postId: let postId): return .makeEndpoint("comments?post=\(postId)")
+           
         }
     }
 }
