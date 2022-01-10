@@ -31,6 +31,9 @@ class DetailPostViewModel {
         
         let token = UserDefaults.standard.string(forKey: "token") ?? ""
         
+        APIService.detailPost(token: token, postId: postId) { <#Comment?#>, <#APIError?#> in
+            <#code#>
+        }
         
         
     }
