@@ -29,9 +29,11 @@ class PostsViewController: UIViewController {
     
     // test 중
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        
-           self.postView.tableView.reloadData()
+        viewModel.getPosts {
+            self.postView.tableView.reloadData()
+        }
         
     }
     
@@ -90,15 +92,20 @@ extension PostsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let row = viewModel.cellForRowAt(indexPath: indexPath)
+//        let row = viewModel.cellForRowAt(indexPath: indexPath)
+        let row = self.viewModel.getPosts.value[indexPath.row]
         
         let vc = DetailPostViewController()
+        print("postView -> DetailPost")
         print(row.id)
         print(row.comments.count)
         print(row.comments)
-        vc.postId = row.id
-        vc.commentCount = row.comments.count
-        self.navigationController?.pushViewController(DetailPostViewController(), animated: true)
+        
+        vc.viewModel.detailPosts.value = row
+        vc.viewModel.postId.value = row.id
+        
+        
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     

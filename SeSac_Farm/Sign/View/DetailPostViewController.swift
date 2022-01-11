@@ -12,8 +12,7 @@ class DetailPostViewController: UIViewController {
     let detailPostView = DetailPostView()
     let viewModel = DetailPostViewModel()
     
-    var postId: Int = 0
-    var commentCount = 0
+    
     
      
     
@@ -21,23 +20,64 @@ class DetailPostViewController: UIViewController {
         self.view = detailPostView
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .white
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+       
+        viewModel.detailPost(postId: viewModel.detailPosts.value.id) {
+            self.detailPostView.contentLabel.text = self.viewModel.detailPosts.value.text
+        }
         
-        viewModel.detailPost(postId: viewModel.postId.value) { }
         
-        viewModel.viewComments(postId: viewModel.postId.value) { }
-        
+        viewModel.viewComments(postId: viewModel.detailPosts.value.id) {
+            
+        }
+       
         viewModel.postId.bind { postId in
             
         }
         viewModel.comment.bind { comment in
+            
+            self.detailPostView.commentLabel.text = "댓글 \(comment.comment)개"
             self.detailPostView.tableView.reloadData()
         }
         
+    }
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        view.backgroundColor = .white
+      
+        viewModel.detailPost(postId: viewModel.postId.value) {
+            
+        }
+        
+        viewModel.viewComments(postId: viewModel.postId.value) {
+            
+        }
+        
+        viewModel.postId.bind { postId in
+            
+        }
+        
+        viewModel.comments.bind { comment in
+            self.detailPostView.tableView.reloadData()
+        }
+      
+        print("DetailPost: \(viewModel.postId.value)")
+        print("DetailPost: \(viewModel.detailPosts.value.id)")
+        
+        
+        detailPostView.usernameLabel.text = viewModel.detailPosts.value.user.username
+        detailPostView.contentLabel.text = viewModel.detailPosts.value.text
+        detailPostView.commentLabel.text = "댓글 \(viewModel.detailPosts.value.comments.count)개"
+        detailPostView.createDateLabel.text = viewModel.detailPosts.value.createdAt
+        
         setTableView()
     }
+    
+    
     
     func setTableView() {
         detailPostView.tableView.delegate = self
@@ -46,19 +86,27 @@ class DetailPostViewController: UIViewController {
         
         detailPostView.tableView.rowHeight = UITableView.automaticDimension
         
-    
     }
 }
 
 extension DetailPostViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return commentCount
+        return viewModel.numberOfRowsInSection
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CommentsTableViewCell.identifier, for: indexPath) as? CommentsTableViewCell else { return UITableViewCell() }
+        
+        let row = viewModel.cellForRowAt(indexPath: indexPath)
+        print(row)
+        print(row)
+        print(row)
+        
+        print("cell \(row.comment)")
+        cell.usernameLabel.text = row.user.username
+        cell.contentLabel.text = row.comment
         
         
         

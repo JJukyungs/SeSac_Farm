@@ -16,6 +16,8 @@ class DetailPostViewModel {
         
     var detailPosts: Observable<Post> = Observable(Post(id: 0, text: "", user: UserPosts(id: 0, username: "", email: "", provider: .local, confirmed: false, blocked: false, role: 0, createdAt: "", updatedAt: ""), createdAt: "", updatedAt: "", comments: []))
     
+    
+    
     var comment: Observable<Comment> = Observable(Comment(id: 0, comment: "", user: UserComment(id: 0, username: "", email: "", provider: .local, confirmed: true, blocked: false, role: 0, createdAt: "", updatedAt: ""), post: PostComent(id: 0, text: "", user: 0, createdAt: "", updatedAt: ""), createdAt: "", updatedAt: ""))
 
     
@@ -56,6 +58,8 @@ class DetailPostViewModel {
         
         APIService.commentsView(token: token, postId: postId) { comment, error in
             
+            print("comment ->",comment)
+            print("-------")
             guard let comment = comment else {
                 return
             }
@@ -72,10 +76,12 @@ class DetailPostViewModel {
 
 extension DetailPostViewModel {
     var numberOfRowsInSection: Int {
-        return comment.value.comment.count
+        print("numberOfRowInSection: \(comments.value.count)")
+        return comments.value.count
     }
     
     func cellForRowAt(indexPath: IndexPath) -> Comment {
+        
         return comments.value[indexPath.row]
     }
 }

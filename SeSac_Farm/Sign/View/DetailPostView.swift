@@ -97,7 +97,7 @@ class DetailPostView: UIView {
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
+        fatalError("init(coder) error")
     }
     
     func setUIView() {
@@ -117,10 +117,10 @@ class DetailPostView: UIView {
         addSubview(commentTextfield)
         
         // 임시 데이터
-        usernameLabel.text = "임시임시"
-        createDateLabel.text = "121212"
-        contentLabel.text = "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq"
-        commentLabel.text = "eeee"
+//        usernameLabel.text = "임시임시"
+//        createDateLabel.text = "121212"
+//        contentLabel.text = "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq"
+//        commentLabel.text = "eeee"
         tableView.backgroundColor = .red
     }
     
@@ -131,7 +131,7 @@ class DetailPostView: UIView {
             make.height.equalTo(60)
         }
         profileImage.snp.makeConstraints { make in
-            make.size.equalTo(50)
+            make.size.equalTo(60)
         }
         contentLabel.snp.makeConstraints { make in
             make.top.equalTo(topStackView.snp.bottom).offset(10)
@@ -147,7 +147,7 @@ class DetailPostView: UIView {
             make.top.equalTo(bottomStackView.snp.bottom).offset(10)
             make.leading.trailing.equalToSuperview().inset(10)
             //임시 크기
-            make.height.equalTo(100)
+//            make.height.equalTo(100)
         }
         
         commentTextfield.snp.makeConstraints { make in
