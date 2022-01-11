@@ -24,6 +24,19 @@ class DetailPostViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        
+        viewModel.detailPost(postId: viewModel.postId.value) { }
+        
+        viewModel.viewComments(postId: viewModel.postId.value) { }
+        
+        viewModel.postId.bind { postId in
+            
+        }
+        viewModel.comment.bind { comment in
+            self.detailPostView.tableView.reloadData()
+        }
+        
+        setTableView()
     }
     
     func setTableView() {
@@ -33,13 +46,7 @@ class DetailPostViewController: UIViewController {
         
         detailPostView.tableView.rowHeight = UITableView.automaticDimension
         
-//        viewModel.getComments(postId: postId) {
-//            
-//        }
-//        viewModel.getComment.bind { comment in
-//            self.detailPostView.tableView.reloadData()
-//        }
-        
+    
     }
 }
 

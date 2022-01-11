@@ -13,14 +13,14 @@ class DetailPostViewModel {
     
     
     var postId: Observable<Int> = Observable(0)
-    
+        
     var detailPosts: Observable<Post> = Observable(Post(id: 0, text: "", user: UserPosts(id: 0, username: "", email: "", provider: .local, confirmed: false, blocked: false, role: 0, createdAt: "", updatedAt: ""), createdAt: "", updatedAt: "", comments: []))
     
     var comment: Observable<Comment> = Observable(Comment(id: 0, comment: "", user: UserComment(id: 0, username: "", email: "", provider: .local, confirmed: true, blocked: false, role: 0, createdAt: "", updatedAt: ""), post: PostComent(id: 0, text: "", user: 0, createdAt: "", updatedAt: ""), createdAt: "", updatedAt: ""))
 
     
     
-//    var comments: Observable<Comment> = Observable(Comments())
+    var comments: Observable<Comments> = Observable(Comments())
     
     
     
@@ -31,8 +31,16 @@ class DetailPostViewModel {
         
         let token = UserDefaults.standard.string(forKey: "token") ?? ""
         
-        APIService.detailPost(token: token, postId: postId) { <#Comment?#>, <#APIError?#> in
-            <#code#>
+        APIService.detailPost(token: token, postId: postId) { post, error in
+            
+            guard let post = post else {
+                return
+            }
+            
+            self.postId.value = postId
+            self.detailPosts.value = post
+            
+            completion()
         }
         
         
@@ -45,9 +53,13 @@ class DetailPostViewModel {
 
         let token = UserDefaults.standard.string(forKey: "token") ?? ""
         print("comment 연결")
-        APIService.commentsView(token: token, postId: postId) { post, error in
+        
+        APIService.commentsView(token: token, postId: postId) { comment, error in
             
-            
+            guard let comment = comment else {
+                return
+            }
+            self.comments.value = comment
             completion()
         }
     }
@@ -56,4 +68,14 @@ class DetailPostViewModel {
    
     
      
+}
+
+extension DetailPostViewModel {
+    var numberOfRowsInSection: Int {
+        return comment.value.comment.count
+    }
+    
+    func cellForRowAt(indexPath: IndexPath) -> Comment {
+        return comments.value[indexPath.row]
+    }
 }
