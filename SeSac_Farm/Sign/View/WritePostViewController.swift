@@ -23,7 +23,13 @@ class WritePostViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .lightGray
         
-        // navigationItem 추가
+        if titleStatus {
+            title = "새싹 농장 글쓰기"
+        } else {
+            title = "새싹 농장 글 수정"
+
+        }
+        
         // 확인
 
         self.navigationItem.rightBarButtonItems = [UIBarButtonItem(title: "확인", style: .done, target: self, action: #selector(okDoneButtonClicked))]
@@ -36,12 +42,7 @@ class WritePostViewController: UIViewController {
             self.writePosteView.textView.text = post.text
         }
         
-        if titleStatus {
-            title = "새싹 농장 글쓰기"
-        } else {
-            title = "새싹 농장 글 수정"
-
-        }
+        
     }
     
     @objc func okDoneButtonClicked() {

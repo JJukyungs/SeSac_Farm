@@ -23,6 +23,7 @@ enum Endpoint {
     case getComment(postId: Int)
     case deletePost(postId: Int)
     case updatePost(postId: Int)
+    
 }
 
 extension Endpoint {

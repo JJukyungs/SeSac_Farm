@@ -29,6 +29,7 @@ class SiginViewModel {
             
             self.signIn.value = userData
             UserDefaults.standard.set(userData.jwt, forKey: "token")
+            UserDefaults.standard.set(userData.user.id, forKey: "userId")
             print("token: \(userData.jwt)")
             
             

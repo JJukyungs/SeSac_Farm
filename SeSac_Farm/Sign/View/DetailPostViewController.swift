@@ -35,9 +35,9 @@ class DetailPostViewController: UIViewController {
         viewModel.postId.bind { postId in
             
         }
-        viewModel.comment.bind { comment in
+        viewModel.comments.bind { comment in
             
-            self.detailPostView.commentLabel.text = "댓글 \(comment.comment)개"
+            self.detailPostView.commentLabel.text = "댓글 \(comment.count)개"
             self.detailPostView.tableView.reloadData()
         }
         
@@ -65,6 +65,9 @@ class DetailPostViewController: UIViewController {
             self.detailPostView.tableView.reloadData()
         }
       
+        viewModel.comment.bind { comment in
+            self.detailPostView.commentTextfield.text = ""
+        }
         
         // 왜 안 받아와질까
         print("DetailPost: \(viewModel.postId.value)")
@@ -76,12 +79,13 @@ class DetailPostViewController: UIViewController {
         detailPostView.commentLabel.text = "댓글 \(viewModel.detailPosts.value.comments.count)개"
         detailPostView.createDateLabel.text = viewModel.detailPosts.value.createdAt
         
+        
+        
         setTableView()
         
         postOptionButton()
-        
-        detailPostView.postOptionButton.isHidden = false
-        detailPostView.postOptionButton.addTarget(self, action: #selector(postOptionButtonClicked), for: .touchUpInside)
+       
+        detailPostView.writeCommentButton.addTarget(self, action: #selector(writeButtonClicked), for: .touchUpInside)
     }
     
     func setTableView() {
@@ -96,9 +100,23 @@ class DetailPostViewController: UIViewController {
     // 수정, 삭제
     func postOptionButton() {
         // true , false 로 자기 post option 버튼 보여주기
-        let myPostIdStatus: Bool = viewModel.detailPosts.value.user.id == UserDefaults.standard.integer(forKey: "userId")
+        let myPostIdStatus: Bool = viewModel.detailPosts.value.user.id != UserDefaults.standard.integer(forKey: "userId")
+        
+        detailPostView.postOptionButton.isHidden = myPostIdStatus
+        detailPostView.postOptionButton.addTarget(self, action: #selector(postOptionButtonClicked), for: .touchUpInside)
+    }
+    
+    
+    @objc func writeButtonClicked() {
+        viewModel.writeComment(comment: detailPostView.commentTextfield.text ?? "", postId: viewModel.postId.value) {
+            print("writeButtonClicked")
+        }
+        
+//        detailPostView.commentTextfield.text = ""
+
         
     }
+    
     
     @objc func postOptionButtonClicked() {
         print("postOptionButtonClicekd")

@@ -97,6 +97,15 @@ class DetailPostView: UIView {
         return button
     }()
     
+    // writeCommentButton
+    var writeCommentButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("확인", for: .normal)
+        button.backgroundColor = .green
+        button.setTitleColor(.white, for: .normal)
+        return button
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -127,6 +136,8 @@ class DetailPostView: UIView {
         
         addSubview(commentTextfield)
         
+        
+        addSubview(writeCommentButton)
     }
     
     func setConstraints() {
@@ -169,9 +180,16 @@ class DetailPostView: UIView {
         
         commentTextfield.snp.makeConstraints { make in
             make.top.equalTo(tableView.snp.bottom).offset(10)
-            make.leading.trailing.equalToSuperview().inset(10)
-            make.bottom.equalTo(self.safeAreaLayoutGuide).offset(-10)
+            make.leading.equalToSuperview().offset(10)
+            make.trailing.equalTo(writeCommentButton.snp.leading).offset(-5)
+            make.bottom.equalTo(self.safeAreaLayoutGuide)
             make.height.equalTo(50)
+        }
+        writeCommentButton.snp.makeConstraints { make in
+            make.top.equalTo(tableView.snp.bottom).offset(10)
+            make.trailing.equalToSuperview().offset(-10)
+            make.bottom.equalTo(self.safeAreaLayoutGuide)
+            make.size.equalTo(50)
         }
     }
     

@@ -126,6 +126,20 @@ class APIService {
         request.httpBody = "text=\(text)".data(using: .utf8, allowLossyConversion: false)
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
     }
+    
+    // comment 작성
+    static func writeComment(token: String, postId: Int, comment: String, completion: @escaping (Comment?, APIError?) -> Void) {
+        
+        let url = Endpoint.getComment(postId: postId).url
+        
+        var request = URLRequest(url: url)
+        
+        request.httpMethod = Method.POST.rawValue
+        request.httpBody = "comment=\(comment)&post=\(postId)".data(using: .utf8, allowLossyConversion: false)
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        
+        URLSession.request(endpoint: request, completion: completion)
+    }
 }
 
 

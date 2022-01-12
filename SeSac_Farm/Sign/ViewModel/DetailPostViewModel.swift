@@ -86,6 +86,24 @@ class DetailPostViewModel {
     
    
     
+    // comment 작성 테스트
+    
+    func writeComment(comment: String, postId: Int, completion: @escaping () -> Void) {
+        
+        let token = UserDefaults.standard.string(forKey: "token") ?? ""
+        
+        APIService.writeComment(token: token, postId: postId, comment: comment) { comment, error in
+            
+            guard let comment = comment else {
+                return
+            }
+            
+            self.comment.value = comment
+            
+            completion()
+        }
+    }
+    
     
     
    
