@@ -76,25 +76,35 @@ class DetailPostViewController: UIViewController {
         detailPostView.commentLabel.text = "댓글 \(viewModel.detailPosts.value.comments.count)개"
         detailPostView.createDateLabel.text = viewModel.detailPosts.value.createdAt
         
-//        setTableView()
+        setTableView()
         
+        postOptionButton()
+        
+        detailPostView.postOptionButton.isHidden = false
+        detailPostView.postOptionButton.addTarget(self, action: #selector(postOptionButtonClicked), for: .touchUpInside)
+    }
+    
+    func setTableView() {
         detailPostView.tableView.delegate = self
         detailPostView.tableView.dataSource = self
         detailPostView.tableView.register(CommentsTableViewCell.self, forCellReuseIdentifier: CommentsTableViewCell.identifier)
+
         detailPostView.tableView.rowHeight = UITableView.automaticDimension
         
     }
     
+    // 수정, 삭제
+    func postOptionButton() {
+        // true , false 로 자기 post option 버튼 보여주기
+        let myPostIdStatus: Bool = viewModel.detailPosts.value.user.id == UserDefaults.standard.integer(forKey: "userId")
+        
+    }
+    
+    @objc func postOptionButtonClicked() {
+        print("postOptionButtonClicekd")
+    }
     
     
-//    func setTableView() {
-//        detailPostView.tableView.delegate = self
-//        detailPostView.tableView.dataSource = self
-//        detailPostView.tableView.register(CommentsTableViewCell.self, forCellReuseIdentifier: CommentsTableViewCell.identifier)
-//
-//        detailPostView.tableView.rowHeight = UITableView.automaticDimension
-//
-//    }
 }
 
 extension DetailPostViewController: UITableViewDelegate, UITableViewDataSource {

@@ -25,4 +25,20 @@ class WritePostViewModel {
             completion()
         }
     }
+    
+    func updatePost(postId: Int, text: String, completion: @escaping () -> Void) {
+        let token = UserDefaults.standard.string(forKey: "token") ?? ""
+        print("updatePost")
+        
+        APIService.updatePost(token: token, postId: postId, text: text) { post, error in
+            
+            guard let post = post else {
+                return
+            }
+            self.writePost.value = post
+            
+            completion()
+        }
+    }
+    
 }

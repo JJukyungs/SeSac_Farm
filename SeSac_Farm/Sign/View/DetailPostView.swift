@@ -31,22 +31,22 @@ class DetailPostView: UIView {
         return label
     }()
     
-    let topStackView: UIStackView = {
-        let sv = UIStackView()
-        sv.axis = .horizontal
-        sv.spacing = 20
-        sv.distribution = .fill
-        return sv
-    }()
+//    let topStackView: UIStackView = {
+//        let sv = UIStackView()
+//        sv.axis = .horizontal
+//        sv.spacing = 20
+//        sv.distribution = .fill
+//        return sv
+//    }()
     
-    // 닉네임 , 날짜 들어갈 스택뷰
-    let topSmallStackView: UIStackView = {
-        let sv = UIStackView()
-        sv.axis = .vertical
-        sv.spacing = 3
-        sv.distribution = .fillEqually
-        return sv
-    }()
+//    // 닉네임 , 날짜 들어갈 스택뷰
+//    let topSmallStackView: UIStackView = {
+//        let sv = UIStackView()
+//        sv.axis = .vertical
+//        sv.spacing = 3
+//        sv.distribution = .fillEqually
+//        return sv
+//    }()
     
     let contentLabel: UILabel = {
         let label = UILabel()
@@ -89,6 +89,14 @@ class DetailPostView: UIView {
     }()
     
     
+    // postOptinoButton
+    var postOptionButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "gearshape.fill"), for: .normal)
+        button.tintColor = .black
+        return button
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -101,11 +109,14 @@ class DetailPostView: UIView {
     }
     
     func setUIView() {
-        addSubview(topStackView)
-        topStackView.addArrangedSubview(profileImage)
-        topStackView.addArrangedSubview(topSmallStackView)
-        topSmallStackView.addArrangedSubview(usernameLabel)
-        topSmallStackView.addArrangedSubview(createDateLabel)
+
+        addSubview(profileImage)
+        addSubview(usernameLabel)
+        addSubview(postOptionButton)
+        postOptionButton.isHidden = false
+        addSubview(createDateLabel)
+        
+        
         addSubview(contentLabel)
         addSubview(bottomStackView)
         bottomStackView.addArrangedSubview(messageImageView)
@@ -116,21 +127,33 @@ class DetailPostView: UIView {
         
         addSubview(commentTextfield)
         
-
-        tableView.backgroundColor = .red
     }
     
     func setConstraints() {
-        topStackView.snp.makeConstraints { make in
-            make.top.equalTo(self.safeAreaLayoutGuide).offset(10)
-            make.leading.equalToSuperview().offset(10)
-            make.height.equalTo(60)
-        }
+
         profileImage.snp.makeConstraints { make in
+            make.top.equalTo(self.safeAreaLayoutGuide).offset(15)
+            make.leading.equalToSuperview().offset(10)
             make.size.equalTo(60)
         }
+        usernameLabel.snp.makeConstraints { make in
+            make.top.equalTo(profileImage.snp.top)
+            make.leading.equalTo(profileImage.snp.trailing).offset(5)
+            make.trailing.equalToSuperview().offset(-30)
+        }
+        createDateLabel.snp.makeConstraints { make in
+            make.top.equalTo(usernameLabel.snp.bottom).offset(5)
+            make.leading.equalTo(profileImage.snp.trailing).offset(5)
+            make.trailing.equalToSuperview().offset(-30)
+        }
+        // postOptionbutton
+        postOptionButton.snp.makeConstraints { make in
+            make.top.equalTo(usernameLabel.snp.top)
+            make.trailing.equalToSuperview().offset(-5)
+            make.size.equalTo(40)
+        }
         contentLabel.snp.makeConstraints { make in
-            make.top.equalTo(topStackView.snp.bottom).offset(10)
+            make.top.equalTo(profileImage.snp.bottom).offset(10)
             make.leading.trailing.equalToSuperview().inset(10)
         }
         bottomStackView.snp.makeConstraints { make in

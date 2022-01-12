@@ -103,6 +103,29 @@ class APIService {
         
         
     }
+    
+    // post Delete
+    
+    static func deletePost(token: String, postId: Int, completion: @escaping (Post?, APIError?) -> Void) {
+        
+        let url = Endpoint.deletePost(postId: postId).url
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = Method.DELETE.rawValue
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        
+        URLSession.request(endpoint: request, completion: completion)
+    }
+    
+    static func updatePost(token: String, postId: Int, text: String, completion: @escaping (Post?, APIError?) -> Void) {
+        
+        let url = Endpoint.updatePost(postId: postId).url
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = Method.PUT.rawValue
+        request.httpBody = "text=\(text)".data(using: .utf8, allowLossyConversion: false)
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+    }
 }
 
 

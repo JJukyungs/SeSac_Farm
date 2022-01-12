@@ -69,6 +69,23 @@ class DetailPostViewModel {
     }
     
     
+    // Post 삭제
+    
+    func deletePost(postId: Int, completion: @escaping () -> Void) {
+        let token = UserDefaults.standard.string(forKey: "token") ?? ""
+        print("postDelete")
+        
+        APIService.deletePost(token: token, postId: postId) { post, error in
+            guard let post = post else {
+                return
+            }
+            self.detailPosts.value = post
+            completion()
+        }
+    }
+    
+   
+    
     
     
    
