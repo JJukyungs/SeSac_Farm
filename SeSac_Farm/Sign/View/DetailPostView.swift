@@ -116,11 +116,7 @@ class DetailPostView: UIView {
         
         addSubview(commentTextfield)
         
-        // 임시 데이터
-//        usernameLabel.text = "임시임시"
-//        createDateLabel.text = "121212"
-//        contentLabel.text = "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq"
-//        commentLabel.text = "eeee"
+
         tableView.backgroundColor = .red
     }
     
@@ -145,14 +141,13 @@ class DetailPostView: UIView {
         
         tableView.snp.makeConstraints { make in
             make.top.equalTo(bottomStackView.snp.bottom).offset(10)
-            make.leading.trailing.equalToSuperview().inset(10)
-            //임시 크기
-//            make.height.equalTo(100)
+            make.leading.trailing.equalToSuperview()
         }
         
         commentTextfield.snp.makeConstraints { make in
-            make.bottom.equalTo(self.safeAreaLayoutGuide).offset(-10)
+            make.top.equalTo(tableView.snp.bottom).offset(10)
             make.leading.trailing.equalToSuperview().inset(10)
+            make.bottom.equalTo(self.safeAreaLayoutGuide).offset(-10)
             make.height.equalTo(50)
         }
     }

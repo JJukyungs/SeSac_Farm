@@ -41,7 +41,7 @@ struct PostComent: Codable {
 struct UserComment: Codable {
     let id: Int
     let username, email: String
-    let provider: ProviderComent
+    let provider: Provider
     let confirmed: Bool
     let blocked: Bool?
     let role: Int
@@ -54,8 +54,8 @@ struct UserComment: Codable {
     }
 }
 
-enum ProviderComent: String, Codable {
-    case local = "local"
-}
+//enum ProviderComent: String, Codable {
+//    case local = "local"
+//}
 
 typealias Comments = [Comment]

@@ -65,6 +65,8 @@ class DetailPostViewController: UIViewController {
             self.detailPostView.tableView.reloadData()
         }
       
+        
+        // 왜 안 받아와질까
         print("DetailPost: \(viewModel.postId.value)")
         print("DetailPost: \(viewModel.detailPosts.value.id)")
         
@@ -74,19 +76,25 @@ class DetailPostViewController: UIViewController {
         detailPostView.commentLabel.text = "댓글 \(viewModel.detailPosts.value.comments.count)개"
         detailPostView.createDateLabel.text = viewModel.detailPosts.value.createdAt
         
-        setTableView()
-    }
-    
-    
-    
-    func setTableView() {
+//        setTableView()
+        
         detailPostView.tableView.delegate = self
         detailPostView.tableView.dataSource = self
         detailPostView.tableView.register(CommentsTableViewCell.self, forCellReuseIdentifier: CommentsTableViewCell.identifier)
-        
         detailPostView.tableView.rowHeight = UITableView.automaticDimension
         
     }
+    
+    
+    
+//    func setTableView() {
+//        detailPostView.tableView.delegate = self
+//        detailPostView.tableView.dataSource = self
+//        detailPostView.tableView.register(CommentsTableViewCell.self, forCellReuseIdentifier: CommentsTableViewCell.identifier)
+//
+//        detailPostView.tableView.rowHeight = UITableView.automaticDimension
+//
+//    }
 }
 
 extension DetailPostViewController: UITableViewDelegate, UITableViewDataSource {
@@ -100,6 +108,7 @@ extension DetailPostViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CommentsTableViewCell.identifier, for: indexPath) as? CommentsTableViewCell else { return UITableViewCell() }
         
         let row = viewModel.cellForRowAt(indexPath: indexPath)
+        print("row")
         print(row)
         print(row)
         print(row)
@@ -108,6 +117,7 @@ extension DetailPostViewController: UITableViewDelegate, UITableViewDataSource {
         cell.usernameLabel.text = row.user.username
         cell.contentLabel.text = row.comment
         
+
         
         
         return cell

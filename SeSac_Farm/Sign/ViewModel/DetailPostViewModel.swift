@@ -58,8 +58,8 @@ class DetailPostViewModel {
         
         APIService.commentsView(token: token, postId: postId) { comment, error in
             
-            print("comment ->",comment)
-            print("-------")
+//            print("comment ->",comment)
+          
             guard let comment = comment else {
                 return
             }
@@ -67,6 +67,8 @@ class DetailPostViewModel {
             completion()
         }
     }
+    
+    
     
     
    
@@ -81,7 +83,6 @@ extension DetailPostViewModel {
     }
     
     func cellForRowAt(indexPath: IndexPath) -> Comment {
-        
         return comments.value[indexPath.row]
     }
 }

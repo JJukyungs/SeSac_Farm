@@ -52,7 +52,7 @@ class CommentsTableViewCell: UITableViewCell {
         contentLabel.snp.makeConstraints { make in
             make.top.equalTo(usernameLabel.snp.bottom).offset(5)
             make.leading.trailing.equalToSuperview().inset(10)
-            make.bottom.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-10)
         }
     }
 }
