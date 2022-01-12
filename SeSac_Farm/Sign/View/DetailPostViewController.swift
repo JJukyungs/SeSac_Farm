@@ -102,6 +102,57 @@ class DetailPostViewController: UIViewController {
     
     @objc func postOptionButtonClicked() {
         print("postOptionButtonClicekd")
+        
+        // alert
+        let alert = UIAlertController(title: "수정 / 삭제", message: "포스트를 수정 / 삭제 하겠습니까?", preferredStyle: .alert)
+        
+        // 수정
+        let updatePost = UIAlertAction(title: "수정", style: .default) { action in
+            
+            // writePostViewController로
+            let vc = WritePostViewController()
+            
+            vc.writePosteViewModel.writePost.value = self.viewModel.detailPosts.value
+            print(vc.writePosteViewModel.writePost.value)
+            vc.titleStatus = false
+
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        
+        // 삭제
+        let deletePost = UIAlertAction(title: "삭제", style: .default) { action in
+            self.deleteCheckAlert()
+        }
+        
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        
+        alert.addAction(updatePost)
+        alert.addAction(deletePost)
+        alert.addAction(cancel)
+        
+        present(alert, animated: true, completion: nil)
+        
+    }
+    
+    
+    func deleteCheckAlert() {
+        let alert = UIAlertController(title: "포스트 삭제", message: "정말로 포스트 글을 삭제하실려고요?????", preferredStyle: .alert)
+        
+        let ok = UIAlertAction(title: "삭제", style: .default) { action in
+            
+            self.viewModel.deletePost(postId: self.viewModel.detailPosts.value.id) {
+                
+            }
+            self.navigationController?.popViewController(animated: true)
+        }
+        
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        
+        alert.addAction(ok)
+        alert.addAction(cancel)
+        
+        present(alert, animated: true, completion: nil)
     }
     
     

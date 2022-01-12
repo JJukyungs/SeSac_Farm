@@ -27,6 +27,7 @@ class WritePostViewModel {
     }
     
     func updatePost(postId: Int, text: String, completion: @escaping () -> Void) {
+       
         let token = UserDefaults.standard.string(forKey: "token") ?? ""
         print("updatePost")
         
