@@ -125,6 +125,8 @@ class APIService {
         request.httpMethod = Method.PUT.rawValue
         request.httpBody = "text=\(text)".data(using: .utf8, allowLossyConversion: false)
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type") // 와씨 이거 얘기해주신거 까먹어서 시간 겁나 날렷넹
+        URLSession.request(endpoint: request, completion: completion)
     }
     
     // comment 작성
@@ -136,6 +138,34 @@ class APIService {
         
         request.httpMethod = Method.POST.rawValue
         request.httpBody = "comment=\(comment)&post=\(postId)".data(using: .utf8, allowLossyConversion: false)
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        
+        URLSession.request(endpoint: request, completion: completion)
+    }
+
+    // 코멘트 수정
+    static func updateComment(token: String, commentId: Int, postId: Int, comment: String, completion: @escaping (Comment?, APIError?) -> Void) {
+        
+        let url = Endpoint.updateComment(commentId: commentId).url
+        
+        var request = URLRequest(url: url)
+        
+        request.httpMethod = Method.PUT.rawValue
+        request.httpBody = "comment=\(comment)&post=\(postId)".data(using: .utf8, allowLossyConversion: false)
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        
+        URLSession.request(endpoint: request, completion: completion)
+    }
+    
+    // 코멘트 삭제
+    static func deleteComment(token: String, commentId: Int, completion: @escaping (Comment?, APIError?) -> Void) {
+        
+        let url = Endpoint.deleteComment(commentId: commentId).url
+        
+        var request = URLRequest(url: url)
+        
+        request.httpMethod = Method.DELETE.rawValue
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         
         URLSession.request(endpoint: request, completion: completion)

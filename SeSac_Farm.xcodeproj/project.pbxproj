@@ -38,8 +38,6 @@
 		1E3CCBE62786F14E00AEEC53 /* DetailPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3CCBE52786F14E00AEEC53 /* DetailPostViewModel.swift */; };
 		1E3CCBE82786FBD000AEEC53 /* CommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3CCBE72786FBD000AEEC53 /* CommentsTableViewCell.swift */; };
 		1E3CCBEA27873B7100AEEC53 /* Comments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3CCBE927873B7100AEEC53 /* Comments.swift */; };
-		1E3CCC12278F45C700AEEC53 /* WriteCommentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3CCC11278F45C700AEEC53 /* WriteCommentViewModel.swift */; };
-		1E3CCC14278F4BE000AEEC53 /* WriteCommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3CCC13278F4BE000AEEC53 /* WriteCommentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,8 +73,6 @@
 		1E3CCBE52786F14E00AEEC53 /* DetailPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostViewModel.swift; sourceTree = "<group>"; };
 		1E3CCBE72786FBD000AEEC53 /* CommentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsTableViewCell.swift; sourceTree = "<group>"; };
 		1E3CCBE927873B7100AEEC53 /* Comments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comments.swift; sourceTree = "<group>"; };
-		1E3CCC11278F45C700AEEC53 /* WriteCommentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteCommentViewModel.swift; sourceTree = "<group>"; };
-		1E3CCC13278F4BE000AEEC53 /* WriteCommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteCommentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,7 +148,6 @@
 				1E3CCBD32785FE0A00AEEC53 /* PostsViewModel.swift */,
 				1E3CCBDF2786D2E000AEEC53 /* WritePostViewModel.swift */,
 				1E3CCBE52786F14E00AEEC53 /* DetailPostViewModel.swift */,
-				1E3CCC11278F45C700AEEC53 /* WriteCommentViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -174,7 +169,6 @@
 				1E3CCBE12786E31C00AEEC53 /* DetailPostView.swift */,
 				1E3CCBE72786FBD000AEEC53 /* CommentsTableViewCell.swift */,
 				1E3CCBE32786EBF600AEEC53 /* DetailPostViewController.swift */,
-				1E3CCC13278F4BE000AEEC53 /* WriteCommentView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -260,12 +254,10 @@
 				1E3CCBE02786D2E000AEEC53 /* WritePostViewModel.swift in Sources */,
 				1E3CCBEA27873B7100AEEC53 /* Comments.swift in Sources */,
 				1E3CCBB7278432E100AEEC53 /* DetailSignUpViewController.swift in Sources */,
-				1E3CCC12278F45C700AEEC53 /* WriteCommentViewModel.swift in Sources */,
 				1E3CCBE42786EBF600AEEC53 /* DetailPostViewController.swift in Sources */,
 				1E3CCBD22785FDF900AEEC53 /* PostsViewController.swift in Sources */,
 				1E3CCB922782C52200AEEC53 /* ViewController.swift in Sources */,
 				1E3CCBBD27847A4E00AEEC53 /* DetailSignUpViewModel.swift in Sources */,
-				1E3CCC14278F4BE000AEEC53 /* WriteCommentView.swift in Sources */,
 				1E3CCBDE2786B99300AEEC53 /* WritePostViewController.swift in Sources */,
 				1E3CCBAC2783515700AEEC53 /* DetailSignUpView.swift in Sources */,
 				1E3CCBD827860A6300AEEC53 /* PostsTableViewCell.swift in Sources */,

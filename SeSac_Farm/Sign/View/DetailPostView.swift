@@ -80,12 +80,19 @@ class DetailPostView: UIView {
     // tableView
     var tableView = UITableView()
     
-    let commentTextfield : UITextField = {
-        let textfield = UITextField()
-        textfield.backgroundColor = .lightGray
-        textfield.layer.cornerRadius = 8
-        textfield.placeholder = " 댓글을 입력해주세요"
-        return textfield
+//    let commentTextfield : UITextField = {
+//        let textfield = UITextField()
+//        textfield.backgroundColor = .lightGray
+//        textfield.layer.cornerRadius = 8
+//        textfield.placeholder = " 댓글을 입력해주세요"
+//        return textfield
+//    }()
+    
+    let commentTextview: UITextView = {
+        let textview = UITextView()
+        textview.backgroundColor = .lightGray
+        textview.layer.cornerRadius = 8
+        return textview
     }()
     
     
@@ -134,7 +141,8 @@ class DetailPostView: UIView {
         // tableView 로 넣을듯 코멘트 부분은
         addSubview(tableView)
         
-        addSubview(commentTextfield)
+//        addSubview(commentTextfield)
+        addSubview(commentTextview)
         
         
         addSubview(writeCommentButton)
@@ -178,18 +186,18 @@ class DetailPostView: UIView {
             make.leading.trailing.equalToSuperview()
         }
         
-        commentTextfield.snp.makeConstraints { make in
+        commentTextview.snp.makeConstraints { make in
             make.top.equalTo(tableView.snp.bottom).offset(10)
             make.leading.equalToSuperview().offset(10)
             make.trailing.equalTo(writeCommentButton.snp.leading).offset(-5)
             make.bottom.equalTo(self.safeAreaLayoutGuide)
-            make.height.equalTo(50)
+            make.height.equalTo(80)
         }
         writeCommentButton.snp.makeConstraints { make in
             make.top.equalTo(tableView.snp.bottom).offset(10)
             make.trailing.equalToSuperview().offset(-10)
             make.bottom.equalTo(self.safeAreaLayoutGuide)
-            make.size.equalTo(50)
+            make.size.equalTo(80)
         }
     }
     

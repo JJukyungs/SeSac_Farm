@@ -104,7 +104,39 @@ class DetailPostViewModel {
         }
     }
     
+    // comment 수정
     
+    func updateComment(postId: Int, commentId: Int, comment: String, completion: @escaping () -> Void) {
+        
+        let token = UserDefaults.standard.string(forKey: "token") ?? ""
+        
+        APIService.updateComment(token: token, commentId: commentId, postId: postId, comment: comment) { comment, error in
+            
+            guard let comment = comment else {
+                return
+            }
+            
+            self.comment.value = comment
+            completion()
+        }
+    }
+    
+    // comment 삭제
+    
+    func deleteComment(commentId: Int, completion: @escaping () -> Void) {
+        
+        let token = UserDefaults.standard.string(forKey: "token") ?? ""
+        
+        APIService.deleteComment(token: token, commentId: commentId) { comment, error in
+            
+            guard let comment = comment else {
+                return
+            }
+            
+            self.comment.value = comment
+            completion()
+        }
+    }
     
    
     

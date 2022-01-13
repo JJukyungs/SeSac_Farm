@@ -66,7 +66,7 @@ class DetailPostViewController: UIViewController {
         }
       
         viewModel.comment.bind { comment in
-            self.detailPostView.commentTextfield.text = ""
+            self.detailPostView.commentTextview.text = ""
         }
         
         // 왜 안 받아와질까
@@ -108,12 +108,9 @@ class DetailPostViewController: UIViewController {
     
     
     @objc func writeButtonClicked() {
-        viewModel.writeComment(comment: detailPostView.commentTextfield.text ?? "", postId: viewModel.postId.value) {
+        viewModel.writeComment(comment: detailPostView.commentTextview.text ?? "", postId: viewModel.postId.value) {
             print("writeButtonClicked")
         }
-        
-//        detailPostView.commentTextfield.text = ""
-
         
     }
     
@@ -134,13 +131,12 @@ class DetailPostViewController: UIViewController {
             print(vc.writePosteViewModel.writePost.value)
             vc.titleStatus = false
 
-            
             self.navigationController?.pushViewController(vc, animated: true)
         }
         
         // 삭제
         let deletePost = UIAlertAction(title: "삭제", style: .default) { action in
-            self.deleteCheckAlert()
+            self.deleteCheckPostAlert()
         }
         
         let cancel = UIAlertAction(title: "취소", style: .cancel)
@@ -154,7 +150,7 @@ class DetailPostViewController: UIViewController {
     }
     
     
-    func deleteCheckAlert() {
+    func deleteCheckPostAlert() {
         let alert = UIAlertController(title: "포스트 삭제", message: "정말로 포스트 글을 삭제하실려고요?????", preferredStyle: .alert)
         
         let ok = UIAlertAction(title: "삭제", style: .default) { action in
@@ -173,6 +169,71 @@ class DetailPostViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
+    @objc func commentOptionButtonClicked(sender: UIButton) {
+        print("commentOptionButtonClicked")
+        
+        
+        let alert = UIAlertController(title: "수정 / 삭제", message: "댓글을 수정 / 삭제 하시겠습니까?", preferredStyle: .alert)
+        
+        let update = UIAlertAction(title: "수정", style: .default) {  action in
+            
+            print("수정")
+    
+        }
+        
+        let delete = UIAlertAction(title: "삭제", style: .default) { action in
+            print("삭제")
+            self.viewModel.comment.value = self.viewModel.comments.value[sender.tag]
+            
+            self.deleteCheckCommentAlert()
+        }
+        
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        
+        alert.addAction(update)
+        alert.addAction(delete)
+        alert.addAction(cancel)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    
+    
+    // 댓글 삭제 alert
+    func deleteCheckCommentAlert() {
+        
+        let alert = UIAlertController(title: "댓글 삭제", message: "정말로 댓글을 삭제하실려고요?????", preferredStyle: .alert)
+        
+        let ok = UIAlertAction(title: "삭제", style: .default) { action in
+           
+            self.viewModel.deleteComment(commentId: self.viewModel.comment.value.id) {
+                print("comment delete")
+                
+                self.viewModel.viewComments(postId: self.viewModel.detailPosts.value.id)
+                {
+                    
+                }
+                
+                self.viewModel.viewComments(postId: self.viewModel.detailPosts.value.id)
+                {
+                    self.detailPostView.tableView.reloadData()
+                }
+            }
+            
+            self.viewModel.comments.bind { comment in
+                self.detailPostView.commentLabel.text = "댓글 \(comment.count)"
+                
+            }
+            self.navigationController?.popViewController(animated: true)
+        }
+        
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        
+        alert.addAction(ok)
+        alert.addAction(cancel)
+        
+        present(alert, animated: true, completion: nil)
+    }
     
 }
 
@@ -196,8 +257,13 @@ extension DetailPostViewController: UITableViewDelegate, UITableViewDataSource {
         cell.usernameLabel.text = row.user.username
         cell.contentLabel.text = row.comment
         
-
+        let optionButtonStatus = row.user.id == UserDefaults.standard.integer(forKey: "userId")
         
+        cell.optionButton.isHidden = !optionButtonStatus
+        
+        cell.optionButton.tag = indexPath.row + 100
+        cell.optionButton.addTarget(self, action: #selector(commentOptionButtonClicked(sender:)), for: .touchUpInside)
+       
         
         return cell
     }

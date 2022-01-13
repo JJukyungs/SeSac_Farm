@@ -47,17 +47,19 @@ class WritePostViewController: UIViewController {
     
     @objc func okDoneButtonClicked() {
         
+        // 새 포스트 작성
         if titleStatus {
             writePosteViewModel.writePost(text: writePosteView.textView.text) {
-                self.navigationController?.popViewController(animated: true)
+                
             }
+            self.navigationController?.popViewController(animated: true)
             print("titleStatus",titleStatus)
-        } else {
+        } else { // 포스트 수정
             writePosteViewModel.updatePost(postId: writePosteViewModel.writePost.value.id, text: writePosteView.textView.text) {
-                self.navigationController?.popViewController(animated: true)
+                
             }
+            self.navigationController?.popViewController(animated: true)
             print("titleStatus",titleStatus)
-            
         }
 
     }

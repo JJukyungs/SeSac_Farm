@@ -26,12 +26,21 @@ class CommentsTableViewCell: UITableViewCell {
         return label
     }()
     
+    let optionButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "gearshape.fill"), for: .normal)
+        button.tintColor = .black
+        return button
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         setUIView()
         setConstraints()
     
+        contentView.isUserInteractionEnabled = true
+      
     }
     
     
@@ -39,9 +48,11 @@ class CommentsTableViewCell: UITableViewCell {
         fatalError("init(coder) 에러")
     }
     
+    
     func setUIView() {
         addSubview(usernameLabel)
         addSubview(contentLabel)
+        addSubview(optionButton)
     }
     
     func setConstraints() {
@@ -53,6 +64,11 @@ class CommentsTableViewCell: UITableViewCell {
             make.top.equalTo(usernameLabel.snp.bottom).offset(5)
             make.leading.trailing.equalToSuperview().inset(10)
             make.bottom.equalToSuperview().offset(-10)
+        }
+        optionButton.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(10)
+            make.trailing.equalToSuperview().offset(-5)
+            make.size.equalTo(30)
         }
     }
 }
