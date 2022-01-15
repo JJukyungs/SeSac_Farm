@@ -8,6 +8,12 @@
 import UIKit
 import SnapKit
 
+// cell button action 하기 위해 프로토콜을 추가할 예정
+
+protocol CommentCellButtonAction {
+    func cellOptionButtonClicked()
+}
+
 class CommentsTableViewCell: UITableViewCell {
     
     static let identifier = "CommentsTableViewCell"
