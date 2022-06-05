@@ -54,8 +54,5 @@ struct UserComment: Codable {
     }
 }
 
-//enum ProviderComent: String, Codable {
-//    case local = "local"
-//}
 
 typealias Comments = [Comment]
