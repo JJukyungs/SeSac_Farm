@@ -37,7 +37,6 @@ class WritePostViewController: UIViewController {
         // 취소
         self.navigationItem.leftBarButtonItems = [UIBarButtonItem(title: "취소", style: .done, target: self, action: #selector(cancelButtonClicked))]
         
-        // 이걸 추가 안해서 업데이트가 안됐넹
         writePosteViewModel.writePost.bind { post in
             self.writePosteView.textView.text = post.text
         }

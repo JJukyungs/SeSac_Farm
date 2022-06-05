@@ -27,7 +27,7 @@ class PostsViewController: UIViewController {
         postView.writeButton.addTarget(self, action: #selector(writeButtonClicked), for: .touchUpInside)
     }
     
-    // test 중
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         

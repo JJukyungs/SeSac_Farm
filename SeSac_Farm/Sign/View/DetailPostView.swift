@@ -31,22 +31,6 @@ class DetailPostView: UIView {
         return label
     }()
     
-//    let topStackView: UIStackView = {
-//        let sv = UIStackView()
-//        sv.axis = .horizontal
-//        sv.spacing = 20
-//        sv.distribution = .fill
-//        return sv
-//    }()
-    
-//    // 닉네임 , 날짜 들어갈 스택뷰
-//    let topSmallStackView: UIStackView = {
-//        let sv = UIStackView()
-//        sv.axis = .vertical
-//        sv.spacing = 3
-//        sv.distribution = .fillEqually
-//        return sv
-//    }()
     
     let contentLabel: UILabel = {
         let label = UILabel()

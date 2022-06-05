@@ -61,7 +61,6 @@ class SignInViewController: UIViewController {
                 print("로그인 성공")
                 print("token:", self.signInViewModel.signIn.value.jwt)
                 
-//                self.navigationController?.pushViewController(PostsViewController(), animated: true)
                 
                 // rootView로 바꾸기
                 DispatchQueue.main.async {
